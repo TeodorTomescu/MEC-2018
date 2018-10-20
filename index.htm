@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MEC - Communicator</title>
+	<link rel="stylesheet" href="styles.css">
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+</head>
+<body>
+
+	<div>
+		<form class="output">
+			<input type="text" class="outputText" value="">
+		</form>
+	</div>
+
+	<div class="submitDiv">
+		<span class="key large submit" id="textEmail" onclick="text2Email()">Text2Email</span>
+		<span class="key large submit" id="textVoice" onclick="text2Voice()">Text2Voice</span> 
+	</div>
+	
+		<div class="keyboard_row">
+			<span class="key" data-key="81" onclick="typeLetter('Q')">Q</span>
+			<span class="key" data-key="87" onclick="typeLetter('W')">W</span>
+			<span class="key" data-key="69" onclick="typeLetter('E')">E</span>
+			<span class="key" data-key="82" onclick="typeLetter('R')">R</span>
+			<span class="key" data-key="84" onclick="typeLetter('T')">T</span>
+			<span class="key" data-key="89" onclick="typeLetter('Y')">Y</span>
+			<span class="key" data-key="85" onclick="typeLetter('U')">U</span>
+			<span class="key" data-key="73" onclick="typeLetter('I')">I</span>
+			<span class="key" data-key="79" onclick="typeLetter('O')">O</span>
+			<span class="key" data-key="80" onclick="typeLetter('P')">P</span>
+		</div>
+
+		<div class="keyboard_row">
+			<span class="key" data-key="65" onclick="typeLetter('A')">A</span>
+			<span class="key" data-key="83" onclick="typeLetter('S')">S</span>
+			<span class="key" data-key="68" onclick="typeLetter('D')">D</span>
+			<span class="key" data-key="70" onclick="typeLetter('F')">F</span>
+			<span class="key" data-key="71" onclick="typeLetter('G')">G</span>
+			<span class="key" data-key="72" onclick="typeLetter('H')">H</span>
+			<span class="key" data-key="74" onclick="typeLetter('J')">J</span>
+			<span class="key" data-key="75" onclick="typeLetter('K')">K</span>
+			<span class="key" data-key="76" onclick="typeLetter('L')">L</span>
+		</div>
+
+		<div class="keyboard_row">
+			<span class="key" data-key="90" onclick="typeLetter('Z')">Z</span>
+			<span class="key" data-key="88" onclick="typeLetter('X')">X</span>
+			<span class="key" data-key="67" onclick="typeLetter('C')">C</span>
+			<span class="key" data-key="86" onclick="typeLetter('V')">V</span>
+			<span class="key" data-key="66" onclick="typeLetter('B')">B</span>
+			<span class="key" data-key="78" onclick="typeLetter('N')">N</span>
+			<span class="key" data-key="77" onclick="typeLetter('M')">M</span>
+			<span class="key large" id="space" onclick="typeLetter(' ')">_</span> 
+		</div>
+
+		<div class="keyboard_row">
+			<span class="key large" id="yes" onclick="typeWord('Yes')">Yes</span>
+			<span class="key large" id="no" onclick="typeWord('No')">No</span>
+			<span class="key large" id="help" onclick="typeWord('Help')">Help</span>
+			<span class="key large" id="clear" onclick="clearText()">CLEAR</span>
+		</div>
+
+
+	<script>
+
+		const output = document.querySelector('.outputText');
+		console.log(output.value);
+
+		const buttons = document.querySelectorAll('.key');
+		const yesBtn = document.querySelector('#yes');
+		const noBtn = document.querySelector('#no');
+		const helpBtn = document.querySelector('#help');
+		const clearBtn = document.querySelector('#clear');
+
+		function typeWord(text){
+
+			//const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+			output.value= text;
+
+		}
+
+		function typeLetter(letter){
+			if (output.value == ""){
+				output.value = letter;
+			} else {
+				output.value = output.value + letter;
+			}
+		}
+
+		function clearText(){
+			output.value = "";
+		}
+
+		function text2Voice(){
+			console.log(1);
+		}
+
+		function text2Email(){
+			console.log(2);
+		}
+
+	</script>
+
+</body>
+</html>
