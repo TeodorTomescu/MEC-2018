@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>MEC - Textype</title>
+	<title>Textype</title>
 	<link rel="stylesheet" href="styles.css">
+	<link rel="shortcut icon" type="image/x-icon" href="https://cdn.pixabay.com/photo/2012/04/24/12/46/letter-39873_960_720.png">
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
 	<script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+	<script src="jquery-3.3.1.min.js"></script>
 </head>
 <body>
 	<div>
@@ -12,6 +14,16 @@
 		<form class="output">
 			<input type="text" class="outputText" value="">
 		</form>
+	</div>
+
+	<!-- suggested words -->
+	<div class="suggestedWords">
+		<p style="display:inline" class="suggestWord sg1" onclick="typeSuggested(0)"></p>
+		<p style="display:inline" class="suggestWord sg2" onclick="typeSuggested(1)"></p>
+		<p style="display:inline" class="suggestWord sg3" onclick="typeSuggested(2)"></p>
+		<p style="display:inline" class="suggestWord sg4" onclick="typeSuggested(3)"></p>
+		<p style="display:inline" class="suggestWord sg5" onclick="typeSuggested(4)"></p>
+		<p style="display:inline" class="suggestWord sg6" onclick="typeSuggested(5)"></p>
 	</div>
 
 	<!-- this div contains the two submission types: text2Email and text2Speech -->
@@ -78,6 +90,8 @@
 			<span class="key large" id="yes" onclick="typeWord('Yes')">Yes</span>
 			<span class="key large" id="no" onclick="typeWord('No')">No</span>
 			<span class="key large" id="help" onclick="typeWord('Help')">Help</span>
+			<span class="key" id="bathroom" onclick="typeWord('Bathroom')"><img height="90px" src="bathroom_icon.png"></img></span>
+			<span class="key" id="food" onclick="typeWord('Food')"><img height="90px" src="food_icon.png"></img></span>
 			<span class="key large" id="clear" onclick="clearText()">CLEAR</span>
 			<span class="key numberKey4" onclick="typeNumber('0')">0</span>
 		</div>
@@ -135,6 +149,8 @@
 			console.log(2);
 		}
 
+
+
 		// after click let go, end the 'yellow border' transition
 		buttons.forEach(key => key.addEventListener('transitionend', removeTransition));
 
@@ -146,6 +162,79 @@
 
 
 	</script>
+
+	<script>
+		const output = document.querySelector('.outputText');
+
+		function typeSuggested(val){
+			if (output.value == ""){
+				output.value = sug[val];
+			} else {
+				output.value = output.value + sug[val];
+			}
+		}
+
+		var sug = [];
+
+		var sug[0] = document.querySelector('.sg1');
+		var sug[1] = document.querySelector('.sg2');
+		var sug[2] = document.querySelector('.sg3');
+		var sug[3] = document.querySelector('.sg4');
+		var sug[4] = document.querySelector('.sg5');
+		var sug[5] = document.querySelector('.sg6');
+
+		var arr = [
+			{
+			"word": "raw",
+			"score": 1627
+			},
+			{
+			"word": "rawhide",
+			"score": 350
+			},
+			{
+			"word": "rawe",
+			"score": 274
+			},
+			{
+			"word": "rawt",
+			"score": 220
+			},
+			{
+			"word": "rawls",
+			"score": 204
+			},
+			{
+			"word": "rawly",
+			"score": 188
+			}];
+
+		sug1.innerHTML = arr[0].word;
+		sug2.innerHTML = arr[1].word;
+		sug3.innerHTML = arr[2].word;
+		sug4.innerHTML = arr[3].word;
+		sug5.innerHTML = arr[4].word;
+		sug6.innerHTML = arr[5].word;
+
+/*
+		$(".outputText").bind("change paste keyup", function() {
+			console.log($(this).val());
+			const URL = "/api/word";
+			const text = {
+				s: $(this).val()
+			};
+            console.log("POSTING!");
+            $.ajax({
+                type: 'POST',
+                url: URL,
+                data: text
+			}).done(function(data){
+				console.log(data);
+			});
+        });
+
+  */      
+    </script>
 
 </body>
 </html>
