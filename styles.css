@@ -1,3 +1,4 @@
+/* css for an entire row of keyboard buttons */
 .keyboard_row {
 	float: left;
 	text-align: center;
@@ -11,28 +12,28 @@
 	margin-left: 14vh;
 }
 
+/* key refers to every keyboard button */
 .key {
   font-family: 'Montserrat';
-  font-size: 20px;
+  font-size: 36px;
   display: inline-block;
   width: 100px; height:100px;
   display:block;
   background-color:#333;
-  text-align: left;
   padding-left: 8px;
   line-height: 29px;
   float:left; margin-left: 2px;
   margin-bottom:2px;
   color: white;
-  text-align: left;
   margin-left: 5px;
   border-radius: 10px;
   border: 2px solid black;
-}
-html{
-	background-color: grey;
+
+  padding-top: 5px;
+  text-align: left;
 }
 
+/* this is the form */
 input[type="text"] {
 	min-height: 100px;
 	min-width: 300px;
@@ -47,10 +48,12 @@ input[type="text"] {
 	margin-top: 10vh;
 }
 
+/* css for large buttons */
 .large {
 	min-width: 200px;
 }
 
+/* css for submit buttons (text2speech, text2email) */
 .submitDiv {
 	justify-content: center;
 	margin-left: 68vh;
@@ -66,6 +69,8 @@ html {
 	background-image: url("https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero-00e10b1f.jpg");
 }
 
+
+/* numberKeys below are used to space the keypad evenly away from the letter keyboard */
 .numberKey {
 	margin-left: 120px;
 }
@@ -82,6 +87,7 @@ html {
 	margin-left: 545px;
 }
 
+/* if key pressed, animate */
 .key:active {
 	transform:scale(1.1);
 	border-color:#ffc600;
