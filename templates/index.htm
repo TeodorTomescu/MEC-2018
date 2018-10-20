@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MEC - Textype</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+	<script src="http://code.responsivevoice.org/responsivevoice.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+	<div>
+		<!-- the output text field -->
+		<form class="output">
+			<input type="text" class="outputText" value="">
+		</form>
+	</div>
+
+	<!-- this div contains the two submission types: text2Email and text2Speech -->
+	<div class="submitDiv">
+		<span class="key large submit" id="textEmail" onclick="text2Email()">Text2Email</span>
+		<span class="key large submit" id="textVoice" onclick="text2Voice()">Text2Voice</span> 
+	</div>
+	
+	<!-- here we define the first row of buttons -->
+		<div class="keyboard_row">
+			<span class="key" data-key="81" onclick="typeLetter('Q')">Q</span>
+			<span class="key" data-key="87" onclick="typeLetter('W')">W</span>
+			<span class="key" data-key="69" onclick="typeLetter('E')">E</span>
+			<span class="key" data-key="82" onclick="typeLetter('R')">R</span>
+			<span class="key" data-key="84" onclick="typeLetter('T')">T</span>
+			<span class="key" data-key="89" onclick="typeLetter('Y')">Y</span>
+			<span class="key" data-key="85" onclick="typeLetter('U')">U</span>
+			<span class="key" data-key="73" onclick="typeLetter('I')">I</span>
+			<span class="key" data-key="79" onclick="typeLetter('O')">O</span>
+			<span class="key" data-key="80" onclick="typeLetter('P')">P</span>
+
+			<!-- class numberKey used to evenly space the buttons away from the text keyboard -->
+			<span class="key numberKey" onclick="typeNumber('1')">1</span>
+			<span class="key" onclick="typeNumber('2')">2</span>
+			<span class="key" onclick="typeNumber('3')">3</span>
+		</div>
+
+	<!-- second row of buttons -->
+		<div class="keyboard_row">
+			<span class="key" data-key="65" onclick="typeLetter('A')">A</span>
+			<span class="key" data-key="83" onclick="typeLetter('S')">S</span>
+			<span class="key" data-key="68" onclick="typeLetter('D')">D</span>
+			<span class="key" data-key="70" onclick="typeLetter('F')">F</span>
+			<span class="key" data-key="71" onclick="typeLetter('G')">G</span>
+			<span class="key" data-key="72" onclick="typeLetter('H')">H</span>
+			<span class="key" data-key="74" onclick="typeLetter('J')">J</span>
+			<span class="key" data-key="75" onclick="typeLetter('K')">K</span>
+			<span class="key" data-key="76" onclick="typeLetter('L')">L</span>
+			<span class="key numberKey2" onclick="typeNumber('4')">4</span>
+			<span class="key" onclick="typeNumber('5')">5</span>
+			<span class="key" onclick="typeNumber('6')">6</span>
+		</div>
+
+	<!-- third row of buttons -->
+		<div class="keyboard_row">
+			<span class="key" data-key="90" onclick="typeLetter('Z')">Z</span>
+			<span class="key" data-key="88" onclick="typeLetter('X')">X</span>
+			<span class="key" data-key="67" onclick="typeLetter('C')">C</span>
+			<span class="key" data-key="86" onclick="typeLetter('V')">V</span>
+			<span class="key" data-key="66" onclick="typeLetter('B')">B</span>
+			<span class="key" data-key="78" onclick="typeLetter('N')">N</span>
+			<span class="key" data-key="77" onclick="typeLetter('M')">M</span>
+			<span class="key large" id="space" onclick="typeLetter(' ')">_</span> 
+
+			<!-- class numberKey used to space the keypad an even distance away from the letter keys -->
+			<span class="key numberKey3" onclick="typeNumber('7')">7</span>
+			<span class="key" onclick="typeNumber('8')">8</span>
+			<span class="key" onclick="typeNumber('9')">9</span>
+		</div>
+
+	<!-- bottom row of buttons -->
+		<div class="keyboard_row">
+			<!-- large class used for wider buttons -->
+			<span class="key large" id="yes" onclick="typeWord('Yes')">Yes</span>
+			<span class="key large" id="no" onclick="typeWord('No')">No</span>
+			<span class="key large" id="help" onclick="typeWord('Help')">Help</span>
+			<span class="key large" id="clear" onclick="clearText()">CLEAR</span>
+			<span class="key numberKey4" onclick="typeNumber('0')">0</span>
+		</div>
+
+
+	<script>
+
+		// get all the document elements to use
+		const output = document.querySelector('.outputText');
+		const buttons = document.querySelectorAll('.key');
+		const yesBtn = document.querySelector('#yes');
+		const noBtn = document.querySelector('#no');
+		const helpBtn = document.querySelector('#help');
+		const clearBtn = document.querySelector('#clear');
+		//bathroom
+
+
+		// takes a full-word input (eg. yes, no buttons) and outputs it to the form
+		function typeWord(text){
+			//const key = document.querySelector(`.key[data-key="${e.keyCode}"]`);
+			output.value= text;
+		}
+
+		// takes letter input and outputs it to the form
+		function typeLetter(letter){
+			if (output.value == ""){
+				output.value = letter;
+			} else {
+				output.value = output.value + letter;
+			}
+		}
+
+		// takes number input and outputs it to the form
+		function typeNumber(number){
+			if (output.value == ""){
+				output.value = number;
+			} else {
+				output.value = output.value + number;
+			}
+		}
+
+		// clears the form
+		function clearText(){
+			output.value = "";
+		}
+
+		// runs text-to-speech with whatever text is in the form
+		function text2Voice(){
+			responsiveVoice.speak(output.value);
+		}
+
+		// sends whatever text is in the form to the specified email
+		function text2Email(){
+			// send contents of the form to email
+			console.log(2);
+		}
+
+		// after click let go, end the 'yellow border' transition
+		buttons.forEach(key => key.addEventListener('transitionend', removeTransition));
+
+		function removeTransition(e){
+			// if 'e' is part of the transformed class, remove it (to end the transition)
+			if (e.propertyName !== 'transform') return;
+			this.classList.remove('clicking');
+		}
+
+
+	</script>
+
+	<script>
+		$(".outputText").bind("change paste keyup", function() {
+			console.log($(this).val());
+			const URL = "/api/word";
+			const text = {
+				s: $(this).val()
+			};
+            console.log("POSTING!");
+            $.ajax({
+                type: 'POST',
+                url: URL,
+                data: text
+			}).done(function(data){
+				console.log(data);
+			});
+        });
+    </script>
+</body>
+</html>
