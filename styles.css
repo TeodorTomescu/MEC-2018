@@ -8,6 +8,7 @@
 	clear: both;
 	padding-top: 5px;
 	padding-left: 5px;
+	margin-left: 14vh;
 }
 
 .key {
@@ -28,10 +29,6 @@
   border-radius: 10px;
   border: 2px solid black;
 }
-.key:hover{
-	border: 1px solid black;
-}
-
 html{
 	background-color: grey;
 }
@@ -46,6 +43,8 @@ input[type="text"] {
 	font-family: 'Montserrat';
 	font-size: 64px;
 	padding-left: 50px;
+	margin-left: 50vh;
+	margin-top: 10vh;
 }
 
 .large {
@@ -54,10 +53,37 @@ input[type="text"] {
 
 .submitDiv {
 	justify-content: center;
+	margin-left: 68vh;
 }
 
 .submit {
 	margin-top: 20px;
 	margin-bottom: 50px;
 	margin-left: 20px;
+}
+
+html {
+	background-image: url("https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero-00e10b1f.jpg");
+}
+
+.numberKey {
+	margin-left: 120px;
+}
+
+.numberKey2 {
+	margin-left: 240px;
+}
+
+.numberKey3 {
+	margin-left: 258px;
+}
+
+.numberKey4 {
+	margin-left: 545px;
+}
+
+.key:active {
+	transform:scale(1.1);
+	border-color:#ffc600;
+	box-shadow: 0 0 10px #ffc600;
 }
